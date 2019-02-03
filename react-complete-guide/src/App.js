@@ -10,7 +10,8 @@ class App extends Component {
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 26 }
     ],
-    otherState: 'some other value'
+    otherState: 'some other value',
+    showPersons: false,
   }
   
   nameChangedHandler = (event) => {
@@ -31,6 +32,10 @@ class App extends Component {
     });
   }
   
+  togglePersonsHandler = () => {
+    this.setState({showPersons: !this.state.showPersons});
+  }
+  
   render() {
     const style = {
       backgroundColor: 'white',
@@ -45,17 +50,23 @@ class App extends Component {
         <h1>Hi</h1>
         <button 
           style={style}
-          onClick={() => this.switchNameHandler('Mad')}>Switch name</button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}
-          click={this.switchNameHandler.bind(this,'Map')}
-          changed={this.nameChangedHandler}>
-          Hobbies: racing
-        </Person>
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}/> 
+          onClick={this.togglePersonsHandler}>Show items</button>
+          {
+            this.state.showPersons?
+              <div>
+                <Person 
+                  name={this.state.persons[0].name} 
+                  age={this.state.persons[0].age}
+                  click={this.switchNameHandler.bind(this,'Map')}
+                  changed={this.nameChangedHandler}>
+                  Hobbies: racing
+                </Person>
+                <Person 
+                  name={this.state.persons[1].name} 
+                  age={this.state.persons[1].age}/> 
+              </div>
+            :null
+          }
       </div>
     );
   }
