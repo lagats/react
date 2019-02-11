@@ -1,25 +1,15 @@
 import React from 'react';
-import ValidationComponent from '../ValidationComponent/ValidationComponent';
 
 const inputCounter = (props) => {
-    let valLength;
-    let valLengthMessage;
-    if (props.inputs && props.inputs[props.id]) {
-        valLength = props.inputs[props.id].length;
-        valLengthMessage = (<p>This field contains {valLength} characters.</p>);
-    }
+    const currentInput = props.state.inputs && props.state.inputs[props.id] ? props.state.inputs[props.id] : '';
     
     return (
         <div>
             <form>
                 <label htmlFor={props.id}>{props.title}</label>
-                <input id={props.id} type="text" onChange={props.change}/>
-                {valLengthMessage}
+                <input id={props.id} type="text" onChange={props.change} value={currentInput.value?currentInput.value:''}/>
+                {currentInput.length?<p>This field contains {currentInput.length} characters.</p>:''}
             </form>
-            
-            <ValidationComponent
-                count={valLength}
-            />
         </div>
     );
 };
