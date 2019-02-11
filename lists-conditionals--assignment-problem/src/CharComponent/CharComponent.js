@@ -1,12 +1,5 @@
 import React from 'react';
 
-const removeCharacters = (state,e,i) => {
-    state.
-  
-  
-  console.log(e,i);
-};
-
 const charComponent = (props) => {
     const currentInput = props.state.inputs && props.state.inputs[props.id] ? props.state.inputs[props.id] : '';
     
@@ -15,10 +8,12 @@ const charComponent = (props) => {
         'padding': '10px 15px', 
         'textAlign': 'center', 
         'fontWeight': 'bold', 
-        'borderRasadius': '3px',
-        'margin': '16px', 
+        'borderRadius': '3px',
+        'margin': '0px 15px 15px 0px', 
         'border': '1px solid black',
-        'boxShadow': '2px 2px whitesmoke'
+        'cursor': 'pointer',
+        'boxShadow': '2px 2px whitesmoke',
+        'background': 'whitesmoke'
     };
     
     let characters;
@@ -26,7 +21,7 @@ const charComponent = (props) => {
       characters = currentInput.value.split('').map((char,i) => {
           return (
             // using 'i' as a key just because this list of letters have to be created on the fly anyway
-            <p key={i} style={style} onClick={(e) => props.click(props.id,e,i)}>{char}</p>
+            <button key={i} style={style} onClick={(e) => props.click(props.id,i)} aria-label={'remove_'+char}>{char}</button> 
           );
       });
     }
