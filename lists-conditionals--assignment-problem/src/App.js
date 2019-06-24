@@ -30,7 +30,7 @@ class App extends Component {
     const inputData = {...this.state.inputs[inputId]};
     const inputDataValue = inputData.value.split('');
     inputDataValue.splice(index,1); 
-    
+     
     this.setState({
         inputs : {
             [inputId] : {
