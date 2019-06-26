@@ -4,21 +4,21 @@ import CourseList from "./CourseList";
 import { Link } from "react-router-dom";
 
 function CoursesPage() {
-    const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState([]);
 
-    useEffect(() => {
-        getCourses().then(_courses => setCourses(_courses));
-    }, []);
+  useEffect(() => {
+    getCourses().then(_courses => setCourses(_courses));
+  }, []);
 
-    return (
-        <>
-            <h2>Courses</h2>
-            <Link className="btn btn-primary" to="/course">
-                Add course
-            </Link>
-            <CourseList courses={courses} />
-        </>
-    );
+  return (
+    <>
+      <h2>Courses</h2>
+      <Link className="btn btn-primary" to="/course">
+        Add Course
+      </Link>
+      <CourseList courses={courses} />
+    </>
+  );
 }
 
 export default CoursesPage;
